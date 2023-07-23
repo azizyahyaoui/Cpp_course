@@ -1,0 +1,757 @@
+# C++ language :
+
+>"Yahyaoui Med Aziz" | azizyahyaoui716@gmail.com.
+
+## Intro :
+
+> C++ is a general-purpose programming language that was developed in the early 1980s by Bjarne Stroustrup at Bell Labs. It is an extension of the C programming language and provides features such as object-oriented programming, templates, and exception handling.
+
+> C++ is a compiled language, which means that programs written in C++ are translated into machine code that can be executed directly by a computer. It is a high-level language, which means that it provides abstractions that allow programmers to work with complex data structures and algorithms without having to deal with the low-level details of the computer.
+
+> One of the key features of C++ is its support for object-oriented programming. This allows programmers to define classes that encapsulate data and behavior, and to create objects that can interact with each other. C++ also supports templates, which allow programmers to write generic code that can work with different types of data.
+
+> C++ has a wide range of applications, from operating systems and device drivers to games and scientific simulations. It is also widely used in the financial industry, where it is used to develop high-performance trading systems.
+
+> Overall, C++ is a powerful and flexible programming language that allows programmers to write efficient and complex programs with a high degree of control over the underlying hardware. It has a steep learning curve, but with practice and patience, it can be a very rewarding language to learn and use.
+
+## Basics of C++ :
+
+### 1 - Prog syntax :
+
+```cpp
+// include standard library for input/output operations.
+#include <iostream>
+using namespace std; /* to use cout, cin etc in the program without specifying their full name as "std::cout" or anything else*/
+
+int main(){
+    /*
+    Your code goes here...
+    */
+
+   cout<<"Hello world from C++ .";
+
+    return 0;
+}
+```
+
+> **#include < iostream >**
+> Lines beginning with a hash sign (#) are directives read and interpreted by what is known as the preprocessor. They are special lines interpreted before the compilation of the program itself begins. In this case, the directive #include <iostream>, instructs the preprocessor to include a section of standard C++ code, known as header iostream, that allows to perform standard input and output operations, such as writing the output of this program (Hello World) to the screen.
+
+### 2 - Variables and types :
+
+> Here is the complete list of fundamental types in C++:
+
+|         Group :          |     Type names\* :     |            Notes on size / precision :             |
+| :----------------------: | :--------------------: | :------------------------------------------------: |
+|     Character types      |          char          |     Exactly one byte in size. At least 8 bits.     |
+|                          |        char16_t        |      Not smaller than char. At least 16 bits.      |
+|                          |        char32_t        |    Not smaller than char16_t. At least 32 bits.    |
+|                          |        wchar_t         | Can represent the largest supported character set. |
+|  Integer types (signed)  |      signed char       |        Same size as char. At least 8 bits.         |
+|                          |    signed short int    |      Not smaller than char. At least 16 bits.      |
+|                          |       signed int       |     Not smaller than short. At least 16 bits.      |
+|                          |    signed long int     |      Not smaller than int. At least 32 bits.       |
+|                          |  signed long long int  |      Not smaller than long. At least 64 bits.      |
+| Integer types (unsigned) |     unsigned char      |                                                    |
+|                          |   unsigned short int   |                                                    |
+|                          |      unsigned int      |      (same size as their signed counterparts)      |
+|                          |   unsigned long int    |
+|                          | unsigned long long int |
+|   Floating-point types   |         float          |
+|                          |    double Precision    |                not less than float                 |
+|                          | long double Precision  |                not less than double                |
+|       Boolean type       |          bool          |
+|        Void type         |    void no storage     |
+|       Null pointer       |   decltype(nullptr)    |
+
+---
+
+> There is also:
+> **"Type deduction: auto and decltype" :**
+
+```cpp
+
+int foo = 0;
+auto bar = foo;  // the same as: int bar = foo;
+
+
+auto x = y + z //y,z are expressions with known or inferred data types
+decltype((x+y)*z)//declares a variable whose declared type will be that of its expression without actually evaluating it
+decltype((x+y)*z/a)//the result has a declared but unknown data type based on operands' data type.
+```
+
+---
+
+> **- Strings :**
+
+> In addition to arrays of characters (`char[]`), there's another way to store strings using pointers to`const` elements followed by an additional null terminator element at the end. This approach can be more memory efficient for large string literals that don't fit into program code segments directly.
+> The `std::string`, `std::wstring`, etc classes provide convenient ways to manipulate such objects.
+
+```c++
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main ()
+{
+  string mystring;
+  mystring = "This is a string";
+  cout << mystring;
+  return 0;
+}
+```
+
+---
+
+> **- Constants :**
+
+> Constants are variables that have their values defined at the beginning of program execution or before any other code in compile time, and cannot change during runtime:
+
+```c++
+const double pi = M_PI;      /* define constant */
+
+```
+
+---
+
+> **- Operators :**
+
+- Arithmetic operators: +, -, \*, / (floating point), % (modulo)
+- Relational operator: ==,!=, >, >=, <, <=
+- Logical Operator: && and ||
+- Bitwise Operators: &, |, ^, ~, << >>
+- Assignment operator (=): assigns the value of right operand to left operand.
+
+---
+
+> **- Basic Input/Output :**
+
+> 1.  `cout` statement for outputting data on console or terminal screen.
+> 2.  `cerr` standard error (output) stream
+> 3.  `clog` standard logging (output) stream
+> 4.  `cin` statements used in input from user using keyboard
+> 5.  Use `flush()` function before endl if you want all your outputs displayed immediately without waiting till end to new line without waiting till end of current line
+> 6.  Using `getline(cin, str);` reads entire line into given string until newline character
+> 7.  If we need only one word as an integer instead of whole sentence like `atoi()`, `stoi()` function can be used which converts single words starting from beginning index of char array passed by reference.function can be used which returns a single number extracted from beginning of the string.
+> 8.  We also have `fstream` library that allows us to perform file operations such as reading files, writing files, appending content to existing files.
+
+---
+
+### 3 - Statements and flow control:
+
+> **- Selection statements: if and else:**
+
+> **Statements**, which can include expressions with values assigned.
+> Statements may also contain keywords such as if else while do...while etc., that affect program behavior based.
+> And switch case. The execution order follows a set of rules known as syntax and semantics.
+> Therefore, understanding these concepts will help you write better code faster!.
+> And there is a Ternary if/else statements :
+
+```cpp
+int x=50; //initialize variable 'x'
+bool isEven=(x%2==0)?true:false;   //'?' denotes condition
+```
+
+---
+
+> **- Iteration statements (loops) :**
+
+> There are three types of loops available in C++ language namely while loop, do...while loop and for loop. Each type has its own characteristics such as initialization expression, termination conditions, incrimination.
+> There are three types of loops available in C++ programming language namely while loop, do...while loop & for loop. Each type has its own characteristics that make it suitable for different purposes.
+> There are three types of loops available in C++ programming language namely while loop, do...
+> while loop & for loop. Each type has its own characteristics that make them suitable for different purposes.
+> Here's an example program demonstrating each one of those looping structures:
+
+```cpp
+#include<iostream>
+using namespace std;
+//While Loop Example Program
+void main() {
+    int i = 0;
+    cout << "Using While Loop:"<<endl;
+    while (i < 5){
+        cout<<"Value at index "<<i<<"="<<(double)(i+7)/8*9
+        <<"Incrementing the value by two"<<endl;
+        ++i;}
+        return ;}
+```
+
+```cpp
+/*Do-While Loop*/
+        void main(){
+            int j = 10;
+            bool flag = true;
+            cout<<"Using Do-While Loop:"<<endl;
+            do{
+                --j;
+                cout<<"The decremented number ="<<j<<endl; }
+                while(flag && j>=6);
+                return ;
+                }
+```
+
+```cpp
+#include<iostream>
+using namespace std;
+//For Loop Example Program
+    void main() {
+        for (int k = 0;k <= 5;++k){
+            cout<< k << endl;
+        }
+```
+
+---
+
+### 4 - Functions :
+
+Functions allow us to group a set of statements together and execute them repeatedly.
+Functions provide a way to group related code together and make it reusable. In this section we will
+learn about how functions work in C++ programming language, including defining them, calling their arguments, returning
+We'll also see how use built-in library functions like `cout`, `cin` etc.
+Here's an example program that demonstrates some basic concepts in C++ programming:
+
+```c++
+#include <iostream>
+
+using namespace std;
+void greetings(); // function prototype declaration
+
+int main () {
+    char name[20];
+    cin >> name;
+    greetings();
+    return 0;
+}
+void greetings (){   /*function definition */
+    cout <<"Welcome! "<< "How are you?"<<"\n";
+}
+```
+
+> **- Overloaded functions :**
+
+> In the above program, there is only one instance where two or more similar but different versions of same functions exist with distinct names.
+> In the above program, there is only one instance where two or more overloads exist with different parameter types but same names. This means when calling these functions using their respective parameters types,
+> the compiler would throw error as they have the same identifier/name which indicates ambiguity during linking time
+> the compiler cannot determine which version should be called based on argument types passed at runtime. To avoid confusion
+> the compiler would not be able to determine which version should get called at runtime based on argument types passed.
+> overloads exist with different parameter types but same number of parameters as shown below:
+
+```c++
+float add(float num1, float num2);    // first overload
+double add(double num1, double num2) ;     // second overload
+string add(char* str1, int len1 );      // third overload
+//...and so on..
+```
+
+> **- Function templates :**
+
+```c++
+// C++ Program to demonstrate
+// Use of template
+#include <iostream>
+using namespace std;
+
+// One function works for all data types. This would work
+// even for user defined types if operator '>' is overloaded
+template <typename T> T myMax(T x, T y)
+{
+	return (x > y) ? x : y;
+}
+
+int main()
+{
+	// Call myMax for int
+	cout << myMax<int>(3, 7) << endl;
+	// call myMax for double
+	cout << myMax<double>(3.0, 7.0) << endl;
+	// call myMax for char
+	cout << myMax<char>('g', 'e') << endl;
+
+	return 0;
+}
+```
+
+> In the above program we have used a generic type `T` which can be any valid c++
+> data-type such as integer or floating point numbers etc., and then provided two arguments using this datatype
+> in our custom max function called `myMax()`. The `<>` brackets are known as **Template Parameter List**.
+> The code inside the curly braces `{ }` after defining the templated function will execute only when the actual argument passed during calling it matches its expected input format specified in the Template Parameters List.
+
+> **- Non-type template arguments :**
+
+```c++
+// Example code snippet using non-type Template Arguments
+#include <iostream>
+using namespace std;
+
+template <class T, int N>
+T fixed_multiply (T val)
+{
+  return val * N;
+}
+
+int main() {
+  std::cout << fixed_multiply<int,2>(10) << '\n';
+  std::cout << fixed_multiply<int,3>(10) << '\n';
+}
+```
+
+> In this example, both functions use two parameters: one class and an integer value (`N`). When the compiler encounters these templates it will generate separate versions of each function with different values of `N`.
+
+---
+
+### 5 - Name visibility :
+
+> **- Scope :**
+> A scope defines where and how names within it may be accessed or visible to other parts of your source file.
+> There are two types of scopes: global and local.
+>
+> - Global variables exist throughout all functions defined inside an entire file.
+> - Local variables only exist during their lifetime within that particular block statement such as if/else statements, loops etc., but not outside them unless they're declared with static keyword.
+
+```c++
+int foo;        // global variable
+
+int some_function ()
+{
+  int bar;      // local variable
+  bar = 0;
+}
+
+int other_function ()
+{
+  foo = 1;  // ok: foo is a global variable
+  bar = 2;  // wrong: bar is not visible from this function
+}
+```
+
+---
+
+> **- Namespaces :**
+
+- The syntax to declare a namespaces is:
+
+          namespace identifier
+          {
+          named_entities
+          }
+
+  > Namespaces provide a way for you to group related objects together into logical units called namespaces.
+  > You can use the `namespace` keyword followed by its name in order to create one. Names declared inside that block will only be accessible with prefixing their identifier with the corresponding namespace's name separated.
+  > You can use them in C++ as containers that hold the definitions of classes, structures, unions and enumerations so they don't interfere with each other when used by different programs.
+  > You can use them to avoid naming conflicts between different classes in the same program.
+  > The `using namespace` directive allows us to access members directly without specifying their full name with its containing
+  > Here's an example using namespace `mynamespace`:
+
+```c++
+#include <iostream>
+using namespace mynamespace;   // include our own custom library here
+void printHello(const char* name){
+    printf("hello %s\n",name);
+    return ;
+    };
+    // main() code goes here...
+    {
+        const char *str="John";
+        std::cout << "Calling hello with str as parameter" <<std::endl;
+        ::printHello(str);// calling by fully qualified name (global)
+    }
+```
+
+---
+
+> **- Storage classes :**
+
+> - In C++, there are five storage classes that determine how variables and functions behave during their lifetime within.
+>   The storage class specifies where and how long a given object or variable will exist during its lifetime within.
+
+| Storage class | Description                                                          | Example              |
+| ------------- | -------------------------------------------------------------------- | -------------------- |
+| - `auto`      | Compiler determines type of variable                                 | - int x=5;<br>- auto |
+| -`decltype()` | operator used implicitly                                             | - double y = 3.14;   |
+| - `register`  | Local variables stored on stack                                      | - long z[20];<br>-   |
+| - `static`    | Global or local scope, but not allocated until first reference made. | -                    |
+| - `extern`    | Linkage defined elsewhere                                            | -extern int i;       |
+| -             | -                                                                    | -                    |
+
+```c++
+// File1.cpp
+#include <iostream>
+
+// Declaration of a global variable 'globalVar' with external linkage
+extern int globalVar;
+
+// Function with a static local variable
+void functionWithStatic() {
+    // 'localStaticVar' will retain its value between function calls
+    static int localStaticVar = 0;
+    localStaticVar++;
+    std::cout << "Static variable: " << localStaticVar << std::endl;
+}
+
+// Definition of the global variable 'globalVar'
+int globalVar = 42;
+
+int main() {
+    functionWithStatic(); // Output: Static variable: 1
+    functionWithStatic(); // Output: Static variable: 2
+
+    std::cout << "Global variable: " << globalVar << std::endl; // Output: Global variable: 42
+
+    return 0;
+}
+
+```
+
+> In this example, we have a global variable globalVar declared in File1.cpp with extern storage class. This variable is later defined in another file (not shown in the example). By declaring it with extern, we indicate to the compiler that the variable is defined elsewhere, and the linker will resolve its definition during the linking phase.
+> We also have a function functionWithStatic() that contains a static local variable localStaticVar. The static keyword here ensures that the variable retains its value between function calls, and it is initialized only once during the program's execution.
+> Keep in mind that the auto and register storage classes are no longer commonly used for variable declaration in modern C++. The static and extern storage classes are still relevant and can be useful for specific scenarios, such as controlling variable lifetime and visibility.
+
+---
+
+### 6 - Arrays :
+
+> Arrays are used also in C++ to store multiple values in one single entity, and they can be declared using square brackets
+> and their size is determined by specifying how many elements it should have inside them.
+
+```c++
+#include<iostream>
+
+using namespace std;
+const int SIZE=5;//size declaration for array initialization and access later on
+int arr[SIZE];   //declaring an integer type array named as `arr` having five
+for(int i=0 ;i < SIZE;++i){
+    cin>>arr[i];     //taking input
+  }
+  cout<<"Array Elements are:"<<"\n";
+  for (int j = 0;j <= SIZE-1; ++j) {
+  cout<<arr[j]<<" ";
+  }
+  return 0;
+  }
+```
+
+---
+
+> **- Character sequences:**
+> Arrays can also be used to store character strings, which we call **character arrays**. The syntax of
+> creating a charcter array in C/C++ language looks like this −
+> char charArrayName [arraySize];
+
+```c++
+//Example: Declaring & Initializing Char Array with Size Specified
+char name1[] ={'J','o','h','n','','D','o','e','\0'};
+char name2[]="John Doe";    //Declares the variable "name" as a character string
+cout << sizeof(name)/sizeof(*name);      //Prints number of characters present in '
+//'the given character sequence'
+
+```
+
+**- Scope :**
+
+```
+
+```
+
+>
+
+### 7 - Strings :
+
+> In C++, strings are represented using the `std::string` class, which is part of the Standard Library. The `std::string` class provides a convenient and efficient way to handle strings of characters.
+> Here's an example of how to use strings and some built-in string functions in C++:
+
+```c++
+#include <iostream>
+#include <string>
+
+int main() {
+    // Creating and initializing strings
+    std::string greeting = "Hello, ";
+    std::string name = "John";
+
+    // Concatenating strings
+    std::string message = greeting + name;
+
+    // Accessing individual characters
+    char firstChar = message[0];
+    char lastChar = message.back();
+
+    // Length of the string
+    int length = message.length(); // or message.size()
+
+    // Checking if the string is empty
+    bool isEmpty = message.empty();
+
+    // Finding a substring
+    std::string search = "John";
+    size_t found = message.find(search);
+    if (found != std::string::npos) {
+        std::cout << "Substring found at index: " << found << std::endl;
+    } else {
+        std::cout << "Substring not found." << std::endl;
+    }
+
+    // Extracting substrings
+    std::string firstName = message.substr(7, 4); // Starting from index 7, extract 4 characters
+
+    // Modifying strings
+    message.append("!");
+    message.insert(6, " the ");
+    message.erase(0, 7); // Erase the first 7 characters
+
+    // Output the final message
+    std::cout << "Final Message: " << message << std::endl;
+
+    return 0;
+}
+```
+
+In this example, we use the `std::string` class to handle strings. The `+` operator is used for string concatenation. The `[]` operator and `back()` function are used to access individual characters. The `length()` or `size()` function provides the length of the string. The `empty()` function checks if the string is empty.
+
+The `find()` function searches for a substring within the string and returns its index if found, otherwise, it returns `std::string::npos` (a constant representing the not-found condition). The `substr()` function extracts a substring from the original string.
+
+The `append()`, `insert()`, and `erase()` functions are used to modify the string. The final output will demonstrate the results of these operations.
+
+These are some of the commonly used built-in string functions provided by the `std::string` class. The C++ Standard Library provides more functionalities for working with strings, such as string comparison, conversion to numeric types, and more. You can refer to the C++ documentation for a comprehensive list of string functions and their usages.
+
+---
+
+### 8 - Pointers :
+
+---
+
+### 9 - C++ OOP :
+
+#### A - Intro to OOP :
+
+> Classes are an expanded concept of data structures: like data structures, they can contain data members, but they can also contain functions as members.
+> An object is an instantiation of a class. In terms of variables, a class would be the type, and an object would be the variable.
+> Classes are defined using either keyword class or keyword struct, with the following syntax:
+
+```c++
+class class_name {
+  access_specifier_1:
+    member1;
+  access_specifier_2:
+    member2;
+  ...
+} object_names;
+```
+
+---
+
+#### B - Classes :
+
+> Inside a class definition we can define variables and functions that belong to this particular instance of
+> the class (object). These members have different accessibility levels such as public, private etc., which determine
+> our class called an **object**. These objects have their own set of data members (variables) which store information about our object's state, as well as its behavior through methods (functions).
+
+```c++
+#include <iostream>
+#include <string>
+using namespace std;
+
+// Defining Class Person
+class Person{
+    //attributes
+    public:
+        string name;
+        int age;
+
+    //methods
+    void printDetails(){
+        cout<<"Name:"<<name<<endl;
+        cout<<"Age:"<<age<<endl;
+    }
+};
+
+int main() {
+    //creating objects for person class
+    Person p1,p2;
+    //assigning values to attributes
+    p1.name="John";
+    p1.age=30;
+    p2.name="Mary";
+    p2.age=45;
+    //calling methods on both objects
+    p1.printDetails();
+    p2.printDetails();
+    return 0;
+}
+```
+
+    Output:
+        Name: John
+        Age: 30
+        Name: Mary
+        Age: 45
+
+> In the above code snippet `Person` is our defined class with two data members i.e. :
+>
+> - A variable named as "name" which stores strings representing names of persons in an organization or any
+>   other place where you need it. It has been declared inside the scope of Public access specifier so
+>   that other classes within your program may also use these member variables without having direct access to them.
+>   that all other classes within same program have direct access to its value.
+> - An integer type member called "age". This represents ages of people and can be used later to calculate some statistics based upon their demographics like average age etc..
+> - We also define one method called 'printDetails()' that prints out details about each object created from this class.
+
+---
+
+#### C - Constructor :
+
+> A constructor is a special type of member function used when we create object from this particular class and initializes some initial state/value.
+> A constructor initializes a new object when created and sets initial state of variables.
+> Constructors are used to initialize member variables during creation time rather than assigning them later using assignment operator (=).
+> They have the same name as the class and do not have a return type (not even void).
+
+> Here are the key points about C++ class constructors:
+>
+> - Default Constructor: If a class does not define any constructors, the compiler provides a default constructor. The default constructor has no parameters and initializes the class's data members to their default values (e.g., 0 for numeric types, empty for strings, and null for pointers).
+> - Parameterized Constructor: A parameterized constructor accepts arguments and uses them to initialize the class's data members. It allows you to provide initial values to the object when it is created.
+> - Copy Constructor: The copy constructor creates a new object as a copy of an existing object. It is called when an object is passed by value, returned by value, or explicitly copied using the assignment operator. If not provided by the programmer, the compiler generates a default copy constructor that performs a shallow copy (copying the values of data members).
+> - Destructor: The destructor is a special member function that is automatically called when an object goes out of scope or is explicitly deleted. It is responsible for releasing any resources allocated by the object, such as dynamic memory or file handles.
+
+> Here's an example that demonstrates different types of constructors:
+
+```c++
+// Example Class with Constructors in C++
+#include <iostream>
+
+class MyClass {
+private:
+    int value;
+
+public:
+    // Default Constructor
+    MyClass() {
+        std::cout << "Default constructor called." << std::endl;
+        value = 0;
+    }
+
+    // Parameterized Constructor
+    MyClass(int v) {
+        std::cout << "Parameterized constructor called." << std::endl;
+        value = v;
+    }
+
+    // Copy Constructor
+    MyClass(const MyClass& other) {
+        std::cout << "Copy constructor called." << std::endl;
+        value = other.value;
+    }
+
+    // Destructor
+    ~MyClass() {
+        std::cout << "Destructor called for value: " << value << std::endl;
+    }
+
+    int getValue() const {
+        return value;
+    }
+};
+
+int main() {
+    MyClass obj1; // Calls the default constructor
+    MyClass obj2(42); // Calls the parameterized constructor
+
+    MyClass obj3 = obj2; // Calls the copy constructor
+    MyClass obj4(obj2); // Also calls the copy constructor
+
+    std::cout << "Value of obj3: " << obj3.getValue() << std::endl;
+    std::cout << "Value of obj4: " << obj4.getValue() << std::endl;
+
+    return 0;
+}
+```
+
+> In this example, we define a class MyClass with a default constructor, a parameterized constructor, a copy constructor, and a destructor. In the main() function, we create objects using different constructors to observe their behaviors.
+
+> When you run this program, the output will be:
+
+    Default constructor called.
+    Parameterized constructor called.
+    Copy constructor called.
+    Copy constructor called.
+    Value of obj3: 42
+    Value of obj4: 42
+    Destructor called for value: 42
+    Destructor called for value: 42
+    Destructor called for value: 42
+    Destructor called for value: 0
+
+> As you can see, constructors are called automatically when objects are created and destructors are called when objects go out of scope. Constructors and destructors are essential for managing the lifecycle of objects and resources in C++.
+
+> **Note:** > **Member initialization in constructors :**</br>
+> When a constructor is used to initialize other members, these other members can be initialized directly, without resorting to statements in its body. This is done by inserting, before the constructor's body, a colon (:) and a list of initializations for class members. For example, consider a class with the following declaration:
+
+```c++
+class Rectangle {
+    int width,height;
+  public:
+    Rectangle(int,int);
+    int area() {return width*height;}
+};
+```
+
+> The constructor for this class could be defined, as usual, as:
+
+1- Rectangle::Rectangle (int x, int y) { width=x; height=y; }
+
+> But it could also be defined using member initialization as:
+
+2 - Rectangle::Rectangle (int x, int y) : width(x) { height=y; }
+
+Or even:
+
+3 - Rectangle::Rectangle (int x, int y) : width(x), height(y) { }
+
+> **Note :** how in this last case, the constructor does nothing else than initialize its members, hence it has an empty function body.
+> For members of fundamental types, it makes no difference which of the ways above the constructor is defined, because they are not initialized by default, but for member objects (those whose type is a class), if they are not initialized after the colon, they are default-constructed.
+> Default-constructing all members of a class may or may always not be convenient: in some cases, this is a waste (when the member is then reinitialized otherwise in the constructor), but in some other cases, default-construction is not even possible (when the class does not have a default constructor). In these cases, members shall be initialized in the member initialization list. For example:
+
+```c++
+
+// member initialization
+#include <iostream>
+using namespace std;
+
+class Circle {
+    double radius;
+  public:
+    Circle(double r) : radius(r) { }
+    double area() {return radius*radius*3.14159265;}
+};
+
+class Cylinder {
+    Circle base;
+    double height;
+  public:
+    Cylinder(double r, double h) : base (r), height(h) {}
+    double volume() {return base.area() * height;}
+};
+
+int main () {
+  Cylinder foo (10,20);
+
+  cout << "foo's volume: " << foo.volume() << '\n';
+  return 0;
+}
+```
+
+> In this example, class Cylinder has a member object whose type is another class (base's type is Circle). Because objects of class Circle can only be constructed with a parameter, Cylinder's constructor needs to call base's constructor, and the only way to do this is in the member initializer list.
+> These initializations can also use uniform initializer syntax, using braces {} instead of parentheses ():
+> Cylinder::Cylinder (double r, double h) : base{r}, height{h} { }
+
+---
+
+#### D - Classes defined with struct and union :
+
+> Classes can be defined not only with keyword class, but also with keywords struct and union.
+
+> The keyword struct, generally used to declare plain data structures, can also be used to declare classes that have member functions, with the same syntax as with keyword class. The only difference between both is that members of classes declared with the keyword struct have public access by default, while members of classes declared with the keyword class have private access by default. For all other purposes both keywords are equivalent in this context.
+
+> Conversely, the concept of unions is different from that of classes declared with struct and class, since unions only store one data member at a time, but nevertheless they are also classes and can thus also hold member functions. The default access in union classes is public.
+Here is an example that defines a structure `Point` containing two members (`x`, which represents the
+horizontal coordinate, and `y`, representing the vertical one):
+```cpp
+
