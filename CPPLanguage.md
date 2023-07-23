@@ -751,7 +751,63 @@ int main () {
 > The keyword struct, generally used to declare plain data structures, can also be used to declare classes that have member functions, with the same syntax as with keyword class. The only difference between both is that members of classes declared with the keyword struct have public access by default, while members of classes declared with the keyword class have private access by default. For all other purposes both keywords are equivalent in this context.
 
 > Conversely, the concept of unions is different from that of classes declared with struct and class, since unions only store one data member at a time, but nevertheless they are also classes and can thus also hold member functions. The default access in union classes is public.
-Here is an example that defines a structure `Point` containing two members (`x`, which represents the
-horizontal coordinate, and `y`, representing the vertical one):
-```cpp
+
+struct:
+In C++, a struct is a class with all its members public by default. This means that you can access the data members of a struct object directly, just like accessing the members of a class with public access specifiers.
+You can define member functions inside a struct, making it similar to a class with public access.
+The memory layout of a struct is such that each data member is allocated sequentially in memory.
+Here's an example of a struct in C++:
+
+```c++
+
+#include <iostream>
+
+struct Person {
+    std::string name;
+    int age;
+};
+
+int main() {
+    Person person1;
+    person1.name = "Alice";
+    person1.age = 30;
+
+    std::cout << "Name: " << person1.name << ", Age: " << person1.age << std::endl;
+    return 0;
+}
+```
+
+union:
+A union is a special class where all its members share the same memory location. This means that only one member of the union can be valid at a time, and accessing one member will overwrite the other members' values.
+Unions are useful when you want to represent different types of data in the same memory location, but you only need one member at a time.
+It's essential to be careful while using unions, as accessing the wrong member can lead to undefined behavior.
+Here's an example of a union in C++:
+
+```c++
+#include <iostream>
+
+union Data {
+    int i;
+    double d;
+    char c;
+};
+
+int main() {
+    Data data;
+    data.i = 42;
+    std::cout << "Integer value: " << data.i << std::endl;
+
+    data.d = 3.14;
+    std::cout << "Double value: " << data.d << std::endl;
+
+    // Accessing c overwrites the value of i and d
+    data.c = 'A';
+    std::cout << "Character value: " << data.c << std::endl;
+
+    // The output of this line will be unpredictable, as 'A' overwrites the previous integer value (42)
+    std::cout << "Integer value: " << data.i << std::endl;
+    return 0;
+}
+```
+> As shown in the example, you can access the members of the struct directly and separately, while accessing one member of the union will affect the values of other members. Therefore, use unions carefully to avoid unintended behavior.
 
