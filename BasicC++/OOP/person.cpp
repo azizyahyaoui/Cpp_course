@@ -83,6 +83,21 @@ public:
     }
 };
 
+/*
+* Inheritance of class person to create software engineer subclass with additional properties and methods specific only to a
+* Sub class of person called software engineer which inherits from the base class 'person' and adds some
+* additional properties specific to a software developer like programming languages they use etc..
+*/
+class SoftwareEngineer : Person
+{
+private:
+    /* data */
+public:
+    SoftwareEngineer(/* args */);
+    ~SoftwareEngineer();
+};
+
+
 int main()
 {
     /* creating objects */
@@ -92,7 +107,11 @@ int main()
     cout << "------------------------------------------------------------" << endl;
     p1.printPerson();
     cout << "------------------------------------------------------------" << endl;
+    p2.hobbies.push_back("Watching moves");
+    p2.hobbies.push_back("Shopping");
+    p2.hobbies.push_front("Singing");
     p2.printPerson();
+
 
     return 0;
 }
