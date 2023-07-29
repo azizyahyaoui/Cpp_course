@@ -1,6 +1,6 @@
 # C++ language :
 
->"Yahyaoui Med Aziz" | azizyahyaoui716@gmail.com.
+>"Yahyaoui Med Aziz" | azizyahyaoui716@gmail.com
 
 ## Intro :
 
@@ -877,7 +877,7 @@ int main() {
 
 ---
 
-####  E - Encapsulations :
+#### E - Encapsulations :
 
 > Encapsulation is one of the four fundamental principles of object-oriented programming (OOP) and is a crucial concept in C++. It refers to the bundling of data and the methods that operate on that data within a single unit, which is known as a class. The data members of the class are usually kept private or protected, and the class provides public methods (member functions) through which the data can be accessed and modified.
 
@@ -938,10 +938,34 @@ Encapsulation allows us to hide the implementation details of the class (e.g., d
 By keeping the data members private, you can ensure that the internal state of the class is not directly accessible from outside code, reducing the risk of unintended modifications and enhancing the security and reliability of your program.
 
 ---
-####   F - Inheritance :
->
 
+#### F - Inheritance :
+> Inheritance that allows you to define a new class based on an existing class. The new class, called the `derived class`, inherits all the properties and methods of the original class, known as the base class, and can add its own properties and methods as well.
+> In C++, inheritance is implemented using the colon symbol (:) followed by the name of the base class in the class declaration of the derived class. For example:
+
+```c++
+class BaseClass {
+  public:
+    void someMethod() {
+      // do something
+    }
+};
+
+class DerivedClass : public BaseClass {
+  public:
+    void someOtherMethod() {
+      // do something else
+    }
+};
+```
+
+In this example, `DerivedClass` is a derived class of `BaseClass`, and it inherits the `someMethod()` method from `BaseClass`. `DerivedClass` also has its own method, `someOtherMethod()`.
+
+There are several types of inheritance in C++, including public, protected, and private inheritance. Public inheritance means that the public members of the base class become public members of the derived class, while protected and private inheritance restrict the visibility of the inherited members.
+
+Inheritance in C++ is a powerful tool for code reuse and organization. It allows you to create new classes that are based on existing classes, without having to rewrite all the code from scratch.
 
 ---
+
 ####  G - Polymorphism :
 
