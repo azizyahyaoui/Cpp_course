@@ -1,6 +1,6 @@
 # C++ language :
 
->"Yahyaoui Med Aziz" | azizyahyaoui716@gmail.com
+> "Yahyaoui Med Aziz" | azizyahyaoui716@gmail.com
 
 ## Intro :
 
@@ -517,11 +517,12 @@ These are some of the commonly used built-in string functions provided by the `s
 ---
 
 ### 8 - Pointers :
->Pointers are an essential concept in C++ and are used to store memory addresses. They allow you to work directly with memory locations, giving you more control over memory allocation and manipulation. Pointers are a fundamental feature of C++ that enables dynamic memory allocation, data structures, and efficient memory management.
+
+> Pointers are an essential concept in C++ and are used to store memory addresses. They allow you to work directly with memory locations, giving you more control over memory allocation and manipulation. Pointers are a fundamental feature of C++ that enables dynamic memory allocation, data structures, and efficient memory management.
 
 Here are some key points about pointers in C++:
 
-1. **Declaring Pointers**: To declare a pointer, you use the asterisk (*) symbol before the pointer variable's name. For example:
+1. **Declaring Pointers**: To declare a pointer, you use the asterisk (\*) symbol before the pointer variable's name. For example:
 
 ```cpp
 int* ptr; // Declares a pointer to an integer
@@ -533,7 +534,7 @@ int* ptr; // Declares a pointer to an integer
 int* ptr = nullptr; // Initializing to null (recommended in modern C++)
 ```
 
-3. **Accessing Pointed Values**: To access the value stored at the memory location pointed by a pointer, you use the dereference operator (*).
+3. **Accessing Pointed Values**: To access the value stored at the memory location pointed by a pointer, you use the dereference operator (\*).
 
 ```cpp
 int x = 10;
@@ -580,7 +581,7 @@ ptr->value = 42; // Accessing 'value' member of obj through pointer
 
 8. **Pointer Safety**: Using pointers incorrectly can lead to undefined behavior, such as accessing invalid memory locations or dereferencing null pointers. Be careful while working with pointers to avoid memory-related bugs.
 
->C++ pointers provide significant flexibility and power, but they require careful handling to avoid memory-related issues. It's recommended to use modern C++ features like smart pointers (`std::unique_ptr` and `std::shared_ptr`) or containers (`std::vector`, `std::array`, etc.) when possible, as they help manage memory automatically and reduce the chances of pointer-related bugs.
+> C++ pointers provide significant flexibility and power, but they require careful handling to avoid memory-related issues. It's recommended to use modern C++ features like smart pointers (`std::unique_ptr` and `std::shared_ptr`) or containers (`std::vector`, `std::array`, etc.) when possible, as they help manage memory automatically and reduce the chances of pointer-related bugs.
 
 ---
 
@@ -873,6 +874,7 @@ int main() {
     return 0;
 }
 ```
+
 > As shown in the example, you can access the members of the struct directly and separately, while accessing one member of the union will affect the values of other members. Therefore, use unions carefully to avoid unintended behavior.
 
 ---
@@ -939,27 +941,60 @@ By keeping the data members private, you can ensure that the internal state of t
 
 ---
 
-#### F - Inheritance :
-> Inheritance that allows you to define a new class based on an existing class. The new class, called the `derived class`, inherits all the properties and methods of the original class, known as the base class, and can add its own properties and methods as well.
-> In C++, inheritance is implemented using the colon symbol (:) followed by the name of the base class in the class declaration of the derived class. For example:
+#### F - Friendship and inheritance :
 
-```c++
+> In C++, friendship and inheritance are two different concepts related to the access control and relationships between classes. Let's discuss each concept separately:
+
+> **Friendship :**</br>
+> In C++, friendship is a mechanism that allows a class or function to access the private and protected members of another class. When a class or function is declared as a friend of another class, it gains special access rights to that class, as if it were part of that class. Friendship is typically used when you want to grant specific access privileges to certain entities, even if they are not directly related through inheritance or other means.
+
+> To declare a class or function as a friend of another class, you typically place a friend declaration inside the class that wants to grant access. For example:
+
+```cpp
+class FriendClass {
+private:
+    int privateData;
+
+public:
+    FriendClass() : privateData(42) {}
+
+    // Friend function declaration
+    friend void FriendFunction(FriendClass& obj);
+};
+
+// Friend function definition
+void FriendFunction(FriendClass& obj) {
+    // Friend function can access private members of FriendClass
+    std::cout << "Accessing private data: " << obj.privateData << std::endl;
+}
+```
+
+In this example, `FriendFunction` is declared as a friend of `FriendClass`, allowing it to access the private member `privateData`.
+
+---
+
+> **Inheritance :** </br>
+> Inheritance is a fundamental concept in object-oriented programming (OOP). It allows a class (derived class or subclass) to inherit properties and behaviors from another class (base class or superclass). The derived class can extend or override the functionality of the base class, and it can also add its own additional data members and member functions.
+
+> To create a derived class, you use a colon (:) followed by the access specifier `public`, `protected`, or `private`, followed by the name of the base class. The access specifier determines how the members of the base class are inherited by the derived class. For example:
+
+```cpp
 class BaseClass {
-  public:
-    void someMethod() {
-      // do something
+public:
+    void baseFunction() {
+        std::cout << "BaseClass function" << std::endl;
     }
 };
 
 class DerivedClass : public BaseClass {
-  public:
-    void someOtherMethod() {
-      // do something else
+public:
+    void derivedFunction() {
+        std::cout << "DerivedClass function" << std::endl;
     }
 };
 ```
 
-In this example, `DerivedClass` is a derived class of `BaseClass`, and it inherits the `someMethod()` method from `BaseClass`. `DerivedClass` also has its own method, `someOtherMethod()`.
+In this example, `DerivedClass` is derived from `BaseClass` using public inheritance. This means that public members of `BaseClass` will be accessible as public members of `DerivedClass`.
 
 There are several types of inheritance in C++, including public, protected, and private inheritance. Public inheritance means that the public members of the base class become public members of the derived class, while protected and private inheritance restrict the visibility of the inherited members.
 
@@ -967,5 +1002,41 @@ Inheritance in C++ is a powerful tool for code reuse and organization. It allows
 
 ---
 
-####  G - Polymorphism :
+> Now, if you combine friendship and inheritance, you can have a friend function that accesses private members of a derived class as well:
 
+```cpp
+class BaseClass {
+private:
+    int privateData;
+
+public:
+    BaseClass() : privateData(42) {}
+
+    // Friend function declaration
+    friend void FriendFunction(BaseClass& obj);
+};
+
+void FriendFunction(BaseClass& obj) {
+    // Friend function can access private members of BaseClass, including derived classes
+    std::cout << "Accessing private data: " << obj.privateData << std::endl;
+}
+
+class DerivedClass : public BaseClass {
+    // Additional data members and member functions of DerivedClass
+};
+```
+
+In this example, the `FriendFunction` can access the private member `privateData` of both `BaseClass` and any class derived from `BaseClass`, including `DerivedClass`.
+
+Remember that friendship should be used judiciously, as it breaks encapsulation and may lead to less maintainable code. It is typically employed when you have specific design considerations that require controlled access between classes. In most cases, prefer to use proper encapsulation and public interfaces for interacting with class members.
+
+---
+
+Inheritance between classes 
+
+
+Multiple inheritance
+
+
+
+#### G - Polymorphism :

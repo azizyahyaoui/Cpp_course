@@ -14,7 +14,7 @@ class Person
 {
     //-------------- attributes ------------------
 
-public:
+private:
     /*
     -public access specifier allows the class to be accessed from outside of its scope.
     This means that any other file can use this class and create objects using it's methods or data members
@@ -25,15 +25,20 @@ public:
     - protected : Similarly as public but also blocks inheritance.
     ==> Private variables are accessible only inside the class itself while Protected ones can be used anywhere within the derived classes too.
     */
-    string firstName, lastName, address, profession;
+    string firstName, lastName, address;
     int age;
     Gender gender;
     double salary;
     bool isMarried = false;
     list<string> hobbies;
-
+protected:
+    /*
+    Protected variables are accessible within the same package (i.e., inside the class definition)
+    They cannot be directly accessed from another object except through derived classes inheriting from our current one. However they may still have private member functions which allow for encapsulation while allowing certain operations on these values such as setting/getting etc..
+    */
+    string profession;
     //-------------- Methods --------------------
-
+public:
     // default constructor
     Person() {}
     //  constructor with params
@@ -53,6 +58,10 @@ public:
 
     // destructor: called when the class goes out of scope or gets deleted
     ~Person() {}
+
+    /* Getter and Setter methods*/
+    
+
 
     void isMarriedStatus(){
         if (isMarried == true)
@@ -84,16 +93,15 @@ public:
 };
 
 /*
-* Inheritance of class person to create software engineer subclass with additional properties and methods specific only to a
-* Sub class of person called software engineer which inherits from the base class 'person' and adds some
-* additional properties specific to a software developer like programming languages they use etc..
+* [Inheritance of class person to create software engineer subclass with additional properties and methods specific only to a Sub class of person called software engineer which inherits from the base class 'person' and adds some additional properties specific to a software developer like programming languages they use etc..
 */
-class SoftwareEngineer : Person
+class SoftwareEngineer :public Person
 {
 private:
-    /* data */
+    list<string> favoriteProgLang;
 public:
-    SoftwareEngineer(/* args */);
+    SoftwareEngineer(
+    );
     ~SoftwareEngineer();
 };
 
