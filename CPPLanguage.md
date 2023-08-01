@@ -945,8 +945,9 @@ By keeping the data members private, you can ensure that the internal state of t
 
 > In C++, friendship and inheritance are two different concepts related to the access control and relationships between classes. Let's discuss each concept separately:
 
-1. **Friendship :**
-   > In C++, friendship is a mechanism that allows a class or function to access the private and protected members of another class. When a class or function is declared as a friend of another class, it gains special access rights to that class, as if it were part of that class. Friendship is typically used when you want to grant specific access privileges to certain entities, even if they are not directly related through inheritance or other means.
+##### 1. **Friendship :**
+
+> In C++, friendship is a mechanism that allows a class or function to access the private and protected members of another class. When a class or function is declared as a friend of another class, it gains special access rights to that class, as if it were part of that class. Friendship is typically used when you want to grant specific access privileges to certain entities, even if they are not directly related through inheritance or other means.
 
 > To declare a class or function as a friend of another class, you typically place a friend declaration inside the class that wants to grant access. For example:
 
@@ -973,7 +974,7 @@ In this example, `FriendFunction` is declared as a friend of `FriendClass`, allo
 
 ---
 
-2. **Inheritance :** </br>
+##### 2. **Inheritance :**
 
 > Inheritance is a fundamental concept in object-oriented programming (OOP). It allows a class (derived class or subclass) to inherit properties and behaviors from another class (base class or superclass). The derived class can extend or override the functionality of the base class, and it can also add its own additional data members and member functions.
 
@@ -1033,7 +1034,7 @@ Remember that friendship should be used judiciously, as it breaks encapsulation 
 
 ---
 
-3. **Inheritance between classes :**
+##### 3. **Inheritance between classes :**
 
 > In C++, there are several types of inheritance that define how classes can inherit properties and behaviors from other classes. The main types of inheritance are:
 
@@ -1122,15 +1123,15 @@ class FinalClass : public DerivedClass1, public DerivedClass2 {
 };
 ```
 
->These are the main types of inheritance in C++. Each type of inheritance serves different purposes and allows you to create class hierarchies that suit your program's requirements. When using inheritance, it is important to consider the relationships between classes and the access specifiers (public, protected, private) to ensure proper access control and data encapsulation.
+> These are the main types of inheritance in C++. Each type of inheritance serves different purposes and allows you to create class hierarchies that suit your program's requirements. When using inheritance, it is important to consider the relationships between classes and the access specifiers (public, protected, private) to ensure proper access control and data encapsulation.
 
 ---
 
-4. **Multiple inheritance :**
+##### 4. **Multiple inheritance :**
 
 > Multiple inheritance in C++ allows a class to inherit properties and behaviors from more than one base class. This means that a derived class can have multiple direct base classes, each contributing to the characteristics of the derived class. Multiple inheritance can be useful in certain situations where a class needs to combine features from multiple sources.
 
->To use multiple inheritance, you list the base classes separated by commas in the derived class declaration, and you specify the access specifiers for each base class. The access specifiers determine how the members of the base classes are inherited by the derived class: `public`, `protected`, or `private`.
+> To use multiple inheritance, you list the base classes separated by commas in the derived class declaration, and you specify the access specifiers for each base class. The access specifiers determine how the members of the base classes are inherited by the derived class: `public`, `protected`, or `private`.
 
 Here's the syntax for a class with multiple inheritance:
 
@@ -1148,7 +1149,7 @@ class DerivedClass : access_specifier BaseClass1, access_specifier BaseClass2 {
 };
 ```
 
->Let's see an example to illustrate multiple inheritance:
+> Let's see an example to illustrate multiple inheritance:
 
 ```cpp
 #include <iostream>
@@ -1187,6 +1188,7 @@ int main() {
 In this example, we have three classes: `Shape`, `Color`, and `Square`. The `Square` class inherits from both `Shape` and `Color` using multiple inheritance. The `printInfo()` method in the `Square` class calls `draw()` and `fill()` methods from the respective base classes `Shape` and `Color`.
 
 Output:
+
 ```
 Square: Drawing a shape.
 Filling with color.
@@ -1195,5 +1197,81 @@ Filling with color.
 As you can see, `Square` is able to access and use the functionalities of both `Shape` and `Color` due to multiple inheritance.
 
 It's essential to be careful when using multiple inheritance, as it can lead to ambiguity if two base classes have methods with the same name. Additionally, it can make the class hierarchy more complex, and managing relationships between multiple base classes might require extra attention. In such cases, virtual inheritance can be used to avoid ambiguity and the "diamond problem" associated with multiple inheritance.
+
+---
+
+##### 5. **Virtual inheritance :**
+
+> Virtual inheritance is a feature in C++ that is used to address the "diamond problem," which arises when a class inherits from two or more classes that have a common base class. The diamond problem results in ambiguity in the inheritance hierarchy, as the derived class may have multiple copies of the common base class due to multiple inheritance paths.
+
+>Consider the following example to understand the diamond problem:
+
+```cpp
+class Animal {
+public:
+    void makeSound() {
+        std::cout << "Animal sound" << std::endl;
+    }
+};
+
+class Mammal : public Animal {
+public:
+    void eat() {
+        std::cout << "Mammal eating" << std::endl;
+    }
+};
+
+class Bird : public Animal {
+public:
+    void fly() {
+        std::cout << "Bird flying" << std::endl;
+    }
+};
+
+class Bat : public Mammal, public Bird {
+public:
+    // ...
+};
+```
+
+In this example, the `Bat` class is derived from both `Mammal` and `Bird`, and both `Mammal` and `Bird` inherit from `Animal`. Due to this multiple inheritance, `Bat` has two copies of the `Animal` class - one through `Mammal` and another through `Bird`.
+
+To resolve this ambiguity and have only one instance of the common base class, you can use virtual inheritance. To make a base class virtually inherited, you use the `virtual` keyword in the inheritance declaration of the derived class.
+
+Here's how to modify the example using virtual inheritance:
+
+```cpp
+class Animal {
+public:
+    void makeSound() {
+        std::cout << "Animal sound" << std::endl;
+    }
+};
+
+class Mammal : virtual public Animal { // Note the "virtual" keyword here
+public:
+    void eat() {
+        std::cout << "Mammal eating" << std::endl;
+    }
+};
+
+class Bird : virtual public Animal { // Note the "virtual" keyword here
+public:
+    void fly() {
+        std::cout << "Bird flying" << std::endl;
+    }
+};
+
+class Bat : public Mammal, public Bird {
+public:
+    // ...
+};
+```
+
+By using virtual inheritance, both `Mammal` and `Bird` share a single instance of the `Animal` class, and the diamond problem is resolved. Now, the `Bat` class contains only one copy of the `Animal` class, avoiding ambiguity.
+
+Virtual inheritance should be used with caution and only when it is necessary to resolve ambiguity in multiple inheritance scenarios. It adds some overhead due to the runtime lookup for virtual base classes, so it's better to use regular inheritance when virtual inheritance is not required.
+
+---
 
 #### G - Polymorphism :
