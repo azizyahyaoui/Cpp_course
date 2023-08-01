@@ -945,8 +945,8 @@ By keeping the data members private, you can ensure that the internal state of t
 
 > In C++, friendship and inheritance are two different concepts related to the access control and relationships between classes. Let's discuss each concept separately:
 
-> **Friendship :**</br>
-> In C++, friendship is a mechanism that allows a class or function to access the private and protected members of another class. When a class or function is declared as a friend of another class, it gains special access rights to that class, as if it were part of that class. Friendship is typically used when you want to grant specific access privileges to certain entities, even if they are not directly related through inheritance or other means.
+1. **Friendship :**
+   > In C++, friendship is a mechanism that allows a class or function to access the private and protected members of another class. When a class or function is declared as a friend of another class, it gains special access rights to that class, as if it were part of that class. Friendship is typically used when you want to grant specific access privileges to certain entities, even if they are not directly related through inheritance or other means.
 
 > To declare a class or function as a friend of another class, you typically place a friend declaration inside the class that wants to grant access. For example:
 
@@ -973,7 +973,8 @@ In this example, `FriendFunction` is declared as a friend of `FriendClass`, allo
 
 ---
 
-> **Inheritance :** </br>
+2. **Inheritance :** </br>
+
 > Inheritance is a fundamental concept in object-oriented programming (OOP). It allows a class (derived class or subclass) to inherit properties and behaviors from another class (base class or superclass). The derived class can extend or override the functionality of the base class, and it can also add its own additional data members and member functions.
 
 > To create a derived class, you use a colon (:) followed by the access specifier `public`, `protected`, or `private`, followed by the name of the base class. The access specifier determines how the members of the base class are inherited by the derived class. For example:
@@ -1032,11 +1033,167 @@ Remember that friendship should be used judiciously, as it breaks encapsulation 
 
 ---
 
-Inheritance between classes 
+3. **Inheritance between classes :**
 
+> In C++, there are several types of inheritance that define how classes can inherit properties and behaviors from other classes. The main types of inheritance are:
 
-Multiple inheritance
+i. Single Inheritance:
+Single inheritance involves a class inheriting properties and behaviors from a single base class. In this type of inheritance, a derived class can only have one direct base class. It forms a simple hierarchy where each class is derived from a single class. For example:
 
+```cpp
+class BaseClass {
+    // Base class members
+};
 
+class DerivedClass : public BaseClass {
+    // Derived class members
+};
+```
+
+ii. Multiple Inheritance:
+Multiple inheritance involves a class inheriting properties and behaviors from multiple base classes. In this type of inheritance, a derived class can have more than one direct base class. Multiple inheritance allows a class to combine the features of multiple classes into a single class. For example:
+
+```cpp
+class BaseClass1 {
+    // Base class 1 members
+};
+
+class BaseClass2 {
+    // Base class 2 members
+};
+
+class DerivedClass : public BaseClass1, public BaseClass2 {
+    // Derived class members
+};
+```
+
+iii. Hierarchical Inheritance:
+Hierarchical inheritance involves multiple derived classes inheriting from a single base class. This creates a hierarchical relationship where a single base class serves as the ancestor for multiple derived classes. For example:
+
+```cpp
+class BaseClass {
+    // Base class members
+};
+
+class DerivedClass1 : public BaseClass {
+    // Derived class 1 members
+};
+
+class DerivedClass2 : public BaseClass {
+    // Derived class 2 members
+};
+```
+
+iv. Multilevel Inheritance:
+Multilevel inheritance involves a chain of inheritance, where a derived class itself becomes the base class for another class. It creates a hierarchy of classes, allowing the inheritance of properties and behaviors at different levels. For example:
+
+```cpp
+class GrandParentClass {
+    // Grandparent class members
+};
+
+class ParentClass : public GrandParentClass {
+    // Parent class members
+};
+
+class ChildClass : public ParentClass {
+    // Child class members
+};
+```
+
+v. Hybrid (or Virtual) Inheritance:
+Hybrid or virtual inheritance is a combination of multiple inheritance and multilevel inheritance. It is used to avoid the "diamond problem" that arises when a class inherits from two or more classes that have a common base class. The virtual keyword is used in the inheritance to resolve ambiguity. It is not as common as other types of inheritance and is used in specific situations. For example:
+
+```cpp
+class BaseClass {
+    // Base class members
+};
+
+class DerivedClass1 : virtual public BaseClass {
+    // Derived class 1 members
+};
+
+class DerivedClass2 : virtual public BaseClass {
+    // Derived class 2 members
+};
+
+class FinalClass : public DerivedClass1, public DerivedClass2 {
+    // Final class members
+};
+```
+
+>These are the main types of inheritance in C++. Each type of inheritance serves different purposes and allows you to create class hierarchies that suit your program's requirements. When using inheritance, it is important to consider the relationships between classes and the access specifiers (public, protected, private) to ensure proper access control and data encapsulation.
+
+---
+
+4. **Multiple inheritance :**
+
+> Multiple inheritance in C++ allows a class to inherit properties and behaviors from more than one base class. This means that a derived class can have multiple direct base classes, each contributing to the characteristics of the derived class. Multiple inheritance can be useful in certain situations where a class needs to combine features from multiple sources.
+
+>To use multiple inheritance, you list the base classes separated by commas in the derived class declaration, and you specify the access specifiers for each base class. The access specifiers determine how the members of the base classes are inherited by the derived class: `public`, `protected`, or `private`.
+
+Here's the syntax for a class with multiple inheritance:
+
+```cpp
+class BaseClass1 {
+    // Base class 1 members
+};
+
+class BaseClass2 {
+    // Base class 2 members
+};
+
+class DerivedClass : access_specifier BaseClass1, access_specifier BaseClass2 {
+    // Derived class members
+};
+```
+
+>Let's see an example to illustrate multiple inheritance:
+
+```cpp
+#include <iostream>
+
+class Shape {
+public:
+    void draw() {
+        std::cout << "Drawing a shape." << std::endl;
+    }
+};
+
+class Color {
+public:
+    void fill() {
+        std::cout << "Filling with color." << std::endl;
+    }
+};
+
+class Square : public Shape, public Color {
+public:
+    void printInfo() {
+        std::cout << "Square: ";
+        draw();
+        fill();
+    }
+};
+
+int main() {
+    Square square;
+    square.printInfo();
+
+    return 0;
+}
+```
+
+In this example, we have three classes: `Shape`, `Color`, and `Square`. The `Square` class inherits from both `Shape` and `Color` using multiple inheritance. The `printInfo()` method in the `Square` class calls `draw()` and `fill()` methods from the respective base classes `Shape` and `Color`.
+
+Output:
+```
+Square: Drawing a shape.
+Filling with color.
+```
+
+As you can see, `Square` is able to access and use the functionalities of both `Shape` and `Color` due to multiple inheritance.
+
+It's essential to be careful when using multiple inheritance, as it can lead to ambiguity if two base classes have methods with the same name. Additionally, it can make the class hierarchy more complex, and managing relationships between multiple base classes might require extra attention. In such cases, virtual inheritance can be used to avoid ambiguity and the "diamond problem" associated with multiple inheritance.
 
 #### G - Polymorphism :
