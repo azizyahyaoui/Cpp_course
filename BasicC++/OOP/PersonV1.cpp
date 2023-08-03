@@ -230,7 +230,7 @@ int main()
     p2.printPerson();
 
     cout << "------------------------------SoftwareEngineer------------------------------" << endl;
-    SoftwareEngineer dev1("Ali", "Mohammad", 26, Male, "Tunisia", false, "Full_Stack_Java", 675.80, {"coding", "Fix bugs"});
+    SoftwareEngineer dev1("Ali", "Mohammad", 26, Male, "Tunisia", false, "Full_Stack_Java", 675.80, {"coding", "Fix bugs :) "});
     dev1.progLangUtilize.push_back("C/C#/C++");
     dev1.progLangUtilize.push_back("Java");
     dev1.progLangUtilize.push_back("Python");
