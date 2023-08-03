@@ -1274,4 +1274,11 @@ Virtual inheritance should be used with caution and only when it is necessary to
 
 ---
 
+#### G- Abstract base classes :
+Pointers to base class
+Virtual members
+lists
+map
+set
+
 #### G - Polymorphism :
