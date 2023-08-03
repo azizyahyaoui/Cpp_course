@@ -31,12 +31,13 @@ private:
     bool isMarried = false;
     list<string> hobbies;
 
-protected:
     /*
     Protected variables are accessible within the same package (i.e., inside the class definition)
     They cannot be directly accessed from another object except through derived classes inheriting from our current one. However they may still have private member functions which allow for encapsulation while allowing certain operations on these values such as setting/getting etc..
     */
+protected:
     double salary;
+
     //-------------- Methods --------------------
 public:
     // default constructor
@@ -92,9 +93,21 @@ public:
         return salary;
     }
 
-    bool getIsMarried() const
+    /*
+    + By marking it as const, you inform the compiler that this member function will not modify any non-static data members of the class. This enables you to call the method on const objects and within other const member functions.
+    + using const where appropriate, you can enhance the readability and safety of your code, and it helps in preventing accidental modifications to the state of objects when they should not be modified.
+    */
+    // Updated method declaration with const specifier
+    void getMarriedStatus() const
     {
-        return isMarried;
+        if (isMarried == true)
+        {
+            cout << "Status: Married\n";
+        }
+        else
+        {
+            cout << "Status: Single" << endl;
+        }
     }
 
     list<string> getHobbies()
@@ -104,6 +117,7 @@ public:
         {
             cout << *it << "     " << endl;
         }
+        return hobbies;
     }
 
     // Setter methods for private member variables
@@ -147,23 +161,6 @@ public:
         hobbies.push_back(activity);
     }
 
-    /*
-   + By marking it as const, you inform the compiler that this member function will not modify any non-static data members of the class. This enables you to call the method on const objects and within other const member functions.
-    + using const where appropriate, you can enhance the readability and safety of your code, and it helps in preventing accidental modifications to the state of objects when they should not be modified.
-    */
-    // Updated method declaration with const specifier
-    void isMarriedStatus() const
-    {
-        if (isMarried == true)
-        {
-            cout << "Status: Married\n";
-        }
-        else
-        {
-            cout << "Status: Single" << endl;
-        }
-    }
-
     void printPerson()
     {
         cout << "Name:" << firstName << " " << lastName << "\tAge:" << age << endl;
@@ -173,13 +170,13 @@ public:
         else
             cout << "Gender : Female "
                  << "\n ";
-        isMarriedStatus();
+        getMarriedStatus();
         cout << "Address : " << address << endl;
         cout << "Profession : " << profession << "\n Salary :" << salary << " $" << endl;
         cout << "Hobbies :" << endl;
-        for (auto it = hobbies.begin(); it != hobbies.end(); ++it)
+        for (auto i : hobbies)
         {
-            cout << *it << "     " << endl;
+            cout << "- " + i << '\n';
         }
     }
 };
@@ -189,13 +186,33 @@ public:
  */
 class SoftwareEngineer : public Person
 {
+public:
+    list<string> progLangUtilize;
+
 private:
-    list<string> ProgLangUtilize;
     int yearsOfExperience;
 
 public:
-    SoftwareEngineer();
-    ~SoftwareEngineer();
+    //  Base constructor
+    using Person::Person;
+    // Derive constructor
+    SoftwareEngineer(int years_OfExperience, list<string> prog_LangUtilize)
+    {
+        yearsOfExperience = years_OfExperience;
+        progLangUtilize = prog_LangUtilize;
+    }
+    ~SoftwareEngineer(){};
+
+    void printFavoritesProgLanguage()
+    {
+        cout << "ProgLangUtilize :" << endl;
+        for (auto i : progLangUtilize)
+        {
+            cout << "- " + i << '\n';
+        }
+    }
+    int getYearsOfExperience() const{ return yearsOfExperience; }
+    void setYearsOfExperience(int years_OfExperience) {yearsOfExperience = years_OfExperience;}
 };
 
 int main()
@@ -212,7 +229,15 @@ int main()
     p2.addHobbies("Singing");
     p2.printPerson();
 
-    cout << "------------------------------------------------------------" << endl;
-p2.getHobbies();
+    cout << "------------------------------SoftwareEngineer------------------------------" << endl;
+    SoftwareEngineer dev1("Ali", "Mohammad", 26, Male, "Tunisia", false, "Full_Stack_Java", 675.80, {"coding", "Fix bugs"});
+    dev1.progLangUtilize.push_back("C/C#/C++");
+    dev1.progLangUtilize.push_back("Java");
+    dev1.progLangUtilize.push_back("Python");
+    dev1.progLangUtilize.push_back("PHP");
+    dev1.printPerson();
+    dev1.setYearsOfExperience(6);
+    cout << "Years of experience : " << dev1.getYearsOfExperience() << endl;
+    dev1.printFavoritesProgLanguage();
     return 0;
 }
