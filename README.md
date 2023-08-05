@@ -24,16 +24,16 @@ The course is divided into several modules, each covering a different topic:
     A. - Intro to OOP:</br>
     B. - Classes:</br>
     C. - Constructor:</br>
-    D. - Classes defined with struct and union :</br>
+    D. - Classes defined with struct and union:</br>
     E. - Encapsulations:</br>
     F. - Friendship and inheritance:</br>
-      1. Friendship :
-      2. Inheritance :
-      3. Inheritance between classes :
-      4. Multiple inheritance :
-      5. Virtual inheritance :
-    G. - Polymorphism :
-    H.- Abstract base classes :
+        1. Friendship :
+        2. Inheritance :
+        3. Inheritance between classes :
+        4. Multiple inheritance :
+        5. Virtual inheritance:</br>
+    G. - Polymorphism:</br>
+    H.- Abstract base classes:</br>
 
 Each module includes theory lectures, coding exercises, and quizzes to help you reinforce your learning.
 
