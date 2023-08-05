@@ -32,8 +32,8 @@ The course is divided into several modules, each covering a different topic:
         3. Inheritance between classes :
         4. Multiple inheritance :
         5. Virtual inheritance:</br>
-    G. - Polymorphism:</br>
-    H.- Abstract base classes:</br>
+  G. - Polymorphism:</br>
+  H.- Abstract base classes:</br>
 
 Each module includes theory lectures, coding exercises, and quizzes to help you reinforce your learning.
 
