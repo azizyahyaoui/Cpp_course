@@ -10,18 +10,30 @@ Before starting this course, you should have a basic understanding of computer c
 
 The course is divided into several modules, each covering a different topic:
 
-1. Introduction to C++ Programming
-2. Variables and Data Types
-3. Operators and Expressions
-4. Control Structures
-5. Functions
-6. Arrays and Strings
-7. Pointers and References
-8. Object-Oriented Programming (OOP) Concepts
-9. Classes and Objects
-10. Inheritance and Polymorphism
-11. Templates and Exceptions
-12. Standard Template Library (STL)
+- Introduction to C++ Programming
+- Basics of C++ :
+  1 - Prog syntax :
+  2 - Variables and types :
+  3 - Statements and flow control:
+  4 - Functions :
+  5 - Name visibility :
+  6 - Arrays :
+  7 - Strings :
+  8 - Pointers :
+  9 - C++ OOP :
+    A - Intro to OOP :
+    B - Classes :
+    C - Constructor :
+    D - Classes defined with struct and union :
+    E - Encapsulations :
+    F - Friendship and inheritance :
+      1. Friendship :
+      2. Inheritance :
+      3. Inheritance between classes :
+      4. Multiple inheritance :
+      5. Virtual inheritance :
+    G - Polymorphism :
+    H- Abstract base classes :
 
 Each module includes theory lectures, coding exercises, and quizzes to help you reinforce your learning.
 
