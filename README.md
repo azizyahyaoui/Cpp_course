@@ -10,8 +10,8 @@ Before starting this course, you should have a basic understanding of computer c
 
 The course is divided into several modules, each covering a different topic:
 
-- Introduction to C++ Programming
-- Basics of C++ :
+1. Introduction to C++ Programming
+2. Basics of C++ :
   1 - Prog syntax :
   2 - Variables and types :
   3 - Statements and flow control:
