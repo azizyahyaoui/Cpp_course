@@ -1,6 +1,6 @@
 # C++ language :
 
-> "Yahyaoui Med Aziz" | azizyahyaoui716@gmail.com
+> "Yahyaoui Med Aziz" | azizyahyaoui716@gmail.com | 2023
 
 ## Intro :
 
@@ -1330,7 +1330,6 @@ Virtual inheritance should be used with caution and only when it is necessary to
 ---
 
 #### H- Abstract base classes :
-
 
 > In C++, an abstract base class is a class that cannot be instantiated directly and is designed to be used as a base class for other classes. It contains one or more pure virtual functions, which are virtual functions with no implementation in the abstract base class. The presence of at least one pure virtual function in a class makes it an abstract base class.
 
