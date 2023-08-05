@@ -20,13 +20,13 @@ The course is divided into several modules, each covering a different topic:
   6. - Arrays :
   7. - Strings :
   8. - Pointers :
-  9. - C++ OOP :
-    A. - Intro to OOP :
-    B. - Classes :
-    C. - Constructor :
-    D. - Classes defined with struct and union :
-    E. - Encapsulations :
-    F. - Friendship and inheritance :
+  9. - C++ OOP :</br>
+    A. - Intro to OOP:</br>
+    B. - Classes:</br>
+    C. - Constructor:</br>
+    D. - Classes defined with struct and union :</br>
+    E. - Encapsulations:</br>
+    F. - Friendship and inheritance:</br>
       1. Friendship :
       2. Inheritance :
       3. Inheritance between classes :
