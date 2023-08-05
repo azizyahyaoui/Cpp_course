@@ -1274,11 +1274,112 @@ Virtual inheritance should be used with caution and only when it is necessary to
 
 ---
 
-#### G- Abstract base classes :
-Pointers to base class
-Virtual members
-lists
-map
-set
-
 #### G - Polymorphism :
+
+---
+
+#### H- Abstract base classes :
+
+
+> In C++, an abstract base class is a class that cannot be instantiated directly and is designed to be used as a base class for other classes. It contains one or more pure virtual functions, which are virtual functions with no implementation in the abstract base class. The presence of at least one pure virtual function in a class makes it an abstract base class.
+
+>An abstract base class serves as an interface for derived classes, providing a common set of virtual functions that derived classes must override. This allows you to define a common interface while leaving the implementation details to the derived classes.
+
+Here's an example of an abstract base class in C++:
+
+```cpp
+#include <iostream>
+
+// Abstract base class
+class Shape {
+public:
+    // Pure virtual function
+    virtual double getArea() const = 0;
+
+    // Virtual function with a default implementation
+    virtual void printInfo() const {
+        std::cout << "Shape information: Unknown" << std::endl;
+    }
+
+    // Non-virtual function
+    void commonFunction() const {
+        std::cout << "Common function in Shape" << std::endl;
+    }
+};
+
+// Derived class Circle
+class Circle : public Shape {
+private:
+    double radius;
+
+public:
+    Circle(double radius) : radius(radius) {}
+
+    // Override the pure virtual function
+    double getArea() const override {
+        return 3.14159 * radius * radius;
+    }
+
+    // Override the virtual function
+    void printInfo() const override {
+        std::cout << "Shape: Circle, Area: " << getArea() << std::endl;
+    }
+};
+
+// Derived class Rectangle
+class Rectangle : public Shape {
+private:
+    double width;
+    double height;
+
+public:
+    Rectangle(double width, double height) : width(width), height(height) {}
+
+    // Override the pure virtual function
+    double getArea() const override {
+        return width * height;
+    }
+
+    // Override the virtual function
+    void printInfo() const override {
+        std::cout << "Shape: Rectangle, Area: " << getArea() << std::endl;
+    }
+};
+
+int main() {
+    // Cannot create an object of an abstract base class
+    // Shape shape; // Error: cannot instantiate abstract class
+
+    // However, we can use pointers or references to abstract base class
+    Circle circle(5.0);
+    Rectangle rectangle(4.0, 6.0);
+
+    Shape* shapePtr1 = &circle;
+    Shape* shapePtr2 = &rectangle;
+
+    shapePtr1->printInfo(); // Output: Shape: Circle, Area: 78.5398
+    shapePtr2->printInfo(); // Output: Shape: Rectangle, Area: 24
+
+    return 0;
+}
+```
+
+In this example, the `Shape` class is an abstract base class with a pure virtual function `getArea()` and a virtual function `printInfo()`. It also has a non-virtual function `commonFunction()`. The `Shape` class cannot be instantiated directly due to the pure virtual function.
+
+The `Circle` and `Rectangle` classes are derived from the `Shape` class. They override the pure virtual function `getArea()` to provide their own implementations. The `printInfo()` function is also overridden in each derived class to provide specialized information.
+
+The `main()` function demonstrates the use of pointers to the abstract base class. We cannot create objects of the `Shape` class directly, but we can use pointers to handle objects of derived classes. This allows us to create a common interface for various shapes while preserving polymorphism and dynamic dispatch.
+
+
+
+
+
+
+
+
+
+        Pointers to base class
+        Virtual members
+        lists
+        map
+        set
