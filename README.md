@@ -12,28 +12,28 @@ The course is divided into several modules, each covering a different topic:
 
 1. Introduction to C++ Programming
 2. Basics of C++ :
-  1 - Prog syntax :
-  2 - Variables and types :
-  3 - Statements and flow control:
-  4 - Functions :
-  5 - Name visibility :
-  6 - Arrays :
-  7 - Strings :
-  8 - Pointers :
-  9 - C++ OOP :
-    A - Intro to OOP :
-    B - Classes :
-    C - Constructor :
-    D - Classes defined with struct and union :
-    E - Encapsulations :
-    F - Friendship and inheritance :
+  1. - Prog syntax :
+  2. - Variables and types :
+  3. - Statements and flow control:
+  4. - Functions :
+  5. - Name visibility :
+  6. - Arrays :
+  7. - Strings :
+  8. - Pointers :
+  9. - C++ OOP :
+    A. - Intro to OOP :
+    B. - Classes :
+    C. - Constructor :
+    D. - Classes defined with struct and union :
+    E. - Encapsulations :
+    F. - Friendship and inheritance :
       1. Friendship :
       2. Inheritance :
       3. Inheritance between classes :
       4. Multiple inheritance :
       5. Virtual inheritance :
-    G - Polymorphism :
-    H- Abstract base classes :
+    G. - Polymorphism :
+    H.- Abstract base classes :
 
 Each module includes theory lectures, coding exercises, and quizzes to help you reinforce your learning.
 
