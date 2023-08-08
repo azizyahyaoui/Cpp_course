@@ -636,6 +636,16 @@ As you can see, both array notation (`numbers[i]`) and pointer notation (`*(ptr 
 
 ---
 
+#### Utilize pointers to return multiple values from functions:
+
+>
+
+
+
+
+
+---
+
 ### 9 - C++ OOP :
 
 #### A - Intro to OOP :
