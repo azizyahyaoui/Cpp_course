@@ -923,9 +923,101 @@ While C++ introduces alternatives like references, smart pointers (like `std::un
 
 ---
 
+### 9 - Dynamic memory in C++:
+
+> Dynamic memory allocation allows you to allocate memory for variables at runtime, giving you more flexibility in managing memory resources. This is achieved using the `new` operator to allocate memory and the `delete` operator to deallocate memory when it's no longer needed.
+
+Here's how dynamic memory allocation works in C++:
+
+1. **Allocating Memory using `new`**:
+   - The `new` operator is used to allocate memory for variables on the heap (dynamically allocated memory).
+   - The general syntax for allocating memory is: `pointer_variable = new data_type;`
+   - After successful allocation, the `new` operator returns a pointer to the allocated memory.
+
+2. **Deallocating Memory using `delete`**:
+   - The `delete` operator is used to release the memory allocated with `new`.
+   - The syntax for deallocating memory is: `delete pointer_variable;`
+   - It's important to deallocate memory to avoid memory leaks.
+
+Here's an example demonstrating dynamic memory allocation:
+
+```cpp
+#include <iostream>
+
+int main() {
+    int* dynamicInt = new int; // Allocate memory for an integer
+    *dynamicInt = 42; // Store a value in the allocated memory
+
+    std::cout << "Dynamic integer value: " << *dynamicInt << std::endl;
+
+    // Don't forget to deallocate the memory to avoid memory leaks
+    delete dynamicInt;
+
+    return 0;
+}
+```
+
+In this example, we allocate memory for an integer using the `new` operator. The allocated memory is pointed to by the pointer `dynamicInt`. After storing a value in the allocated memory, we print its value.
+
+It's important to note that when you're done using dynamically allocated memory, you must release it using the `delete` operator. Failing to do so can lead to memory leaks, where memory is allocated but not properly deallocated, resulting in wasted memory resources.
+
+```cpp
+int* dynamicArray = new int[5]; // Allocate memory for an array of integers
+// Use dynamicArray...
+delete[] dynamicArray; // Deallocate memory for the array
+```
+
+For arrays, you should use the `delete[]` operator to deallocate the memory, as shown in the example above.
+
+In modern C++, you can also use smart pointers, such as `std::unique_ptr` and `std::shared_ptr`, to manage dynamic memory automatically, reducing the risk of memory leaks and improving code safety. These smart pointers handle memory deallocation automatically when the pointer goes out of scope or is no longer needed.
+
 ---
 
-### 9 - C++ OOP :
+### 10 - Dynamic arrays  :
+
+> Dynamic arrays in C++ are arrays whose size is determined at runtime rather than compile time. They are created on the heap using dynamic memory allocation. This allows you to allocate memory for an array of elements whose size can be specified during program execution. Dynamic arrays are useful when you need to work with arrays whose size is not known at compile time or when you want to conserve memory by allocating memory only when needed.
+
+Here's how you can create and use dynamic arrays in C++:
+
+```cpp
+#include <iostream>
+
+int main() {
+    int size;
+    std::cout << "Enter the size of the array: ";
+    std::cin >> size;
+
+    // Allocate memory for a dynamic integer array
+    int* dynamicArray = new int[size];
+
+    // Initialize the array elements
+    for (int i = 0; i < size; ++i) {
+        dynamicArray[i] = i * 10;
+    }
+
+    // Print the array elements
+    std::cout << "Array elements: ";
+    for (int i = 0; i < size; ++i) {
+        std::cout << dynamicArray[i] << " ";
+    }
+    std::cout << std::endl;
+
+    // Deallocate the memory for the dynamic array
+    delete[] dynamicArray;
+
+    return 0;
+}
+```
+
+In this example, the program prompts the user to enter the size of the dynamic array. It then allocates memory for the array using the `new` operator and initializes the array elements with values based on their indices. After printing the array elements, the program deallocates the memory for the dynamic array using the `delete[]` operator.
+
+It's important to note that dynamic arrays need to be explicitly deallocated using `delete[]` to prevent memory leaks. Failing to deallocate memory can lead to memory leaks, where memory is allocated but not released, resulting in wasted memory resources.
+
+As mentioned earlier, in modern C++, it's often recommended to use smart pointers like `std::unique_ptr` or `std::shared_ptr` to manage dynamic memory automatically, as they ensure proper memory deallocation when the pointer goes out of scope or is no longer needed.
+
+---
+
+### 11 - C++ OOP :
 
 #### A - Intro to OOP :
 
