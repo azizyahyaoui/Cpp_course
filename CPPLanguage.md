@@ -112,6 +112,44 @@ int main ()
 const double pi = M_PI;      /* define constant */
 
 ```
+> **- uniform initialization :**
+> The notation `int myVar {45}` in C++ is known as uniform initialization or list initialization. It's a modern way to initialize variables using curly braces `{}` instead of the traditional assignment operator `=`. This notation provides several benefits, including preventing narrowing conversions, allowing initialization of complex objects, and promoting consistency.
+
+Here's how it works:
+
+```cpp
+int myVar {45}; // Initialize an integer variable 'myVar' with the value 45
+```
+
+Benefits and features of uniform initialization:
+
+1. **Preventing Narrowing Conversions**: With traditional initialization using the assignment operator (`=`), you might inadvertently lose information due to narrowing conversions (e.g., initializing a `double` with an `int` value). Uniform initialization is more strict and prevents such narrowing conversions.
+
+2. **Initialization of Complex Objects**: Uniform initialization works well with various types of objects, including arrays, classes, and structures. It simplifies the syntax for initializing complex objects.
+
+3. **Consistency**: Uniform initialization syntax can be used consistently for different types of initialization (e.g., objects, aggregates, and arrays), promoting a more uniform coding style.
+
+4. **Clarity**: It can help avoid the "most vexing parse" problem, where a declaration is ambiguously parsed as a function declaration instead of an object declaration.
+
+Here are a few examples illustrating uniform initialization:
+
+```cpp
+int myInt {42}; // Initialize an integer
+double myDouble {3.14}; // Initialize a double
+char myChar {'A'}; // Initialize a character
+std::string myString {"Hello"}; // Initialize a string
+
+int myArray[] {1, 2, 3, 4, 5}; // Initialize an integer array
+
+struct Point {
+    int x;
+    int y;
+};
+
+Point p {10, 20}; // Initialize a structure
+```
+
+Overall, uniform initialization offers more consistent, safer, and cleaner initialization syntax in C++ and is encouraged to be used in modern C++ code.
 
 ---
 
@@ -529,6 +567,13 @@ int* ptr; // Declares a pointer to an integer
 
 ```cpp
 int* ptr = nullptr; // Initializing to null (recommended in modern C++)
+//or
+int* ptr(nullptr);
+//or
+int* ptr{nullptr};
+//or
+int* ptr{};
+
 ```
 
 3. **Accessing Pointed Values**: To access the value stored at the memory location pointed by a pointer, you use the dereference operator (\*).
