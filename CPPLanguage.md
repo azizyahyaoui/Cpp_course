@@ -1907,6 +1907,36 @@ The `main()` function demonstrates the use of pointers to the abstract base clas
 
 ---
 
+
+### 13 - advance data structures in c++:
+
+#### 1. Intro :
+
+>In C++, there are several advanced data structures that can be used to efficiently store and manipulate data. Some of the commonly used advanced data structures in C++ include:
+
+- **Linked List**: A linked list is a dynamic data structure where each element (node) contains a value and a pointer/reference to the next node. It provides efficient insertion and deletion operations, but random access is slower compared to arrays or vectors.
+- **Stack**: A stack is a Last-In-First-Out (LIFO) data structure where elements are added and removed from the same end (top). It supports two main operations: push (add an element) and pop (remove the top element).
+
+- **Queue**: A queue is a First-In-First-Out (FIFO) data structure where elements are added at one end (rear) and removed from the other end (front). It supports two main operations: enqueue (add an element) and dequeue (remove the front element).
+
+- **Binary Tree**: A binary tree is a hierarchical data structure where each node has at most two children (left and right). It provides efficient search, insertion, and deletion operations.
+
+- **Heap**: A heap is a complete binary tree that satisfies the heap property. It can be implemented as a binary heap and is commonly used to implement priority queues. The heap property ensures that the parent node has a higher (or lower) value than its children.
+
+- **Hash Table**: A hash table (also known as a hash map) is a data structure that uses a hash function to map keys to values. It provides fast insertion, deletion, and retrieval operations. In C++, the `std::unordered_map` class provides an implementation of a hash table.
+
+- **Graph**: A graph is a collection of nodes (vertices) connected by edges. It is a versatile data structure used to represent relationships between objects. Graphs can be implemented using various techniques such as adjacency matrix, adjacency list, or an edge list.
+
+- **Trie**: A trie (prefix tree) is an efficient data structure for storing and searching strings. It is particularly useful for applications involving dictionary storage, autocomplete, and spell checking.
+
+>These are just a few examples of advanced data structures in C++. The C++ Standard Template Library (STL) provides many more data structures and algorithms that can be used to solve complex problems efficiently.
+
+---
+
+#### :
+
+
+
 ## to do!
         Pointers to base class
         Virtual members
