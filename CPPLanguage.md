@@ -1941,7 +1941,16 @@ The `main()` function demonstrates the use of pointers to the abstract base clas
 
 ---
 
-### 4.   :
+#### 4.   :
+---
+
+### 14 - Lambda expression :
+
+---
+
+### 15 - Exceptions:
+
+---
 
 ## to do!
         Pointers to base class
